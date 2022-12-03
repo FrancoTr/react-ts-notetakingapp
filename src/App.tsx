@@ -1,5 +1,12 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Routes, Route } from "react-router-dom";
+
 function App() {
-  return <h1>Hello</h1>;
+  return (
+    <Routes>
+      <Route path='/' element={<h1>Hi!</h1>} />
+    </Routes>
+  );
 }
 
 export default App;
