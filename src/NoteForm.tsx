@@ -19,6 +19,10 @@ export function NoteForm() {
             </Form.Group>
           </Col>
         </Row>
+        <Form.Group controlId='markdown'>
+          <Form.Label>Body</Form.Label>
+          <Form.Control required as='textarea' rows={15} />
+        </Form.Group>
       </Stack>
     </Form>
   );
