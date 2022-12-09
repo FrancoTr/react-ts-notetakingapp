@@ -1,4 +1,5 @@
 import { Row, Col, Form, Stack, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import CreatableReactSelect from "react-select/creatable";
 
 export function NoteForm() {
@@ -27,6 +28,7 @@ export function NoteForm() {
           <Button type='submit' variant='primary'>
             Save
           </Button>
+          <Link to='..' />
           <Button type='button' variant='outline-secondary'>
             Cancel
           </Button>
