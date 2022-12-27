@@ -4,9 +4,15 @@ import { Link } from "react-router-dom";
 import ReactSelect from "react-select";
 import { Note, Tag } from "./App";
 
+type SimplifiedNote = {
+  tags: Tag[];
+  title: string;
+  id: string;
+};
+
 type NoteListProps = {
   availableTags: Tag[];
-  notes: Note[];
+  notes: SimplifiedNote[];
 };
 
 export function NoteList({ availableTags, notes }: NoteListProps) {
@@ -72,10 +78,14 @@ export function NoteList({ availableTags, notes }: NoteListProps) {
       <Row xs={1} sm={2} lg={4} xl={4} className='g-3'>
         {filteredNotes.map((note) => (
           <Col key={note.id}>
-            <NoteCard />
+            <NoteCard id={note.id} title={note.title} tags={note.tags} />
           </Col>
         ))}
       </Row>
     </>
   );
+}
+
+function NoteCard({ id, title, tags }: SimplifiedNote) {
+  return <h1>Hi</h1>;
 }
