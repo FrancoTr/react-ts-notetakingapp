@@ -6,6 +6,7 @@ import { useLocalStorage } from "./useLocalStorage";
 import { v4 as uuidV4 } from "uuid";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { NoteList } from "./NoteList";
+import { NoteLayout } from "./NoteLayout";
 
 export type Note = {
   id: string;
@@ -55,7 +56,7 @@ function App() {
   return (
     <Container className='my-4'>
       <Routes>
-        <Route path='/' element={<NoteList notes={notesWithTags} availableTags={tags} />} />
+        <Route path='/' element={<NoteLayout notes={notesWithTags} />} />
         <Route
           path='/new'
           element={<NewNote onSubmit={onCreateNote} onAddTag={addTag} availableTags={tags} />}
