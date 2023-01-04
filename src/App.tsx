@@ -67,6 +67,12 @@ function App() {
     });
   }
 
+  function onDeleteNote(id: string) {
+    setNotes((prevNotes) => {
+      return prevNotes.filter((note) => note.id !== id);
+    });
+  }
+
   return (
     <Container className='my-4'>
       <Routes>
@@ -76,7 +82,7 @@ function App() {
           element={<NewNote onSubmit={onCreateNote} onAddTag={addTag} availableTags={tags} />}
         />
         <Route path='/:id'>
-          <Route index element={<Note />} />
+          <Route index element={<Note onDelete={onDeleteNote} />} />
           <Route
             path='edit'
             element={<EditNote onSubmit={onUpdateNote} onAddTag={addTag} availableTags={tags} />}
