@@ -15,9 +15,16 @@ type NoteListProps = {
   notes: SimplifiedNote[];
 };
 
+type EditTagsModalProps = {
+  show: boolean;
+  availableTags: Tag[];
+  handleClose: () => void;
+};
+
 export function NoteList({ availableTags, notes }: NoteListProps) {
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
   const [title, setTitle] = useState("");
+  const [editTagsModalIsOpen, setEditTagsModalIsOpen] = useState(false);
 
   const filteredNotes = useMemo(() => {
     return notes.filter((note) => {
@@ -82,7 +89,11 @@ export function NoteList({ availableTags, notes }: NoteListProps) {
           </Col>
         ))}
       </Row>
-      <EditTagsModal />
+      <EditTagsModal
+        show={editTagsModalIsOpen}
+        handleClose={() => setEditTagsModalIsOpen(false)}
+        availableTags={availableTags}
+      />
     </>
   );
 }
@@ -108,7 +119,7 @@ function NoteCard({ id, title, tags }: SimplifiedNote) {
   );
 }
 
-function EditTagsModal({ availableTags }) {
+function EditTagsModal({ availableTags, handleClose, show }: EditTagsModalProps) {
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
